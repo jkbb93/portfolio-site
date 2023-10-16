@@ -1,0 +1,27 @@
+.control {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.control span {
+  font-size: 0.875rem;
+}
+
+.control button {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.control button svg {
+  width: 70%;
+  height: 70%;
+  fill: inherit;
+}

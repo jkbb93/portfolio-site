@@ -1,0 +1,12 @@
+.footer {
+    padding: 0 5vw;
+    display: flex;
+    justify-content: center;
+}
+
+.footer > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    padding: 24px;
+}
