@@ -1,16 +1,10 @@
 import styles from "./CodeExampleHeader.module.css";
 import CopyToClipboardControl from "./CopyToClipboardControl";
 
-function CodeExampleHeader({ fileName, code, darkMode = true }) {
+function CodeExampleHeader({ fileName, code }) {
   return (
     <div className={styles.header}>
-      <h2
-        style={{
-          color: darkMode ? "#ffffff" : "inherit",
-        }}
-      >
-        {fileName}
-      </h2>
+      <h2>{fileName}</h2>
       <CopyToClipboardControl text={code} />
     </div>
   );

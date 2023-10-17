@@ -1,5 +1,4 @@
 import { useRef, useLayoutEffect, useState } from "react";
-import { ThemeableContainer } from "../../shared";
 import styles from "./MainContent.module.css";
 
 function MainContent({ children }) {
@@ -24,14 +23,14 @@ function MainContent({ children }) {
   }, []);
 
   return (
-    <ThemeableContainer
+    <div
       ref={wrapperRef}
       element="div"
       className={styles.wrapper}
       style={{ minHeight: wrapperMinHeight }}
     >
       <main>{children}</main>
-    </ThemeableContainer>
+    </div>
   );
 }
 

@@ -1,15 +1,14 @@
-import { ThemeableContainer } from "../../shared";
-import IconLinks from "./IconLinks";
+import FooterIconLinks from "./FooterIconLinks";
 import styles from "./SiteFooter.module.css";
 
 function SiteFooter() {
   return (
-    <ThemeableContainer element="footer" className={styles.footer}>
+    <footer className={styles.footer}>
       <div>
-        <IconLinks />
+        <FooterIconLinks />
         <span>Jake Betts {new Date().getFullYear()}</span>
       </div>
-    </ThemeableContainer>
+    </footer>
   );
 }
 

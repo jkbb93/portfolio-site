@@ -1,15 +1,14 @@
-.links {
+.nav {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.links a:not(:last-child) {
+.link:not(:last-child) {
     margin-right: 16px;
 }
 
-.links a svg {
-    fill: inherit;
+.link {
     width: 2rem;
     height: 2rem;
 }

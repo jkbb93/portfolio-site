@@ -1,0 +1,28 @@
+body {
+  --bg-color-primary: rgb(254, 254, 254);
+  --text-color-primary: rgb(30, 30, 36);
+  --bg-color-secondary: rgb(250, 248, 244);
+  --theme-transiton: background-color 250ms ease-out, color 250ms ease-out; 
+
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-primary);
+  fill: var(--text-color-primary);
+}
+
+body.dark {
+  --bg-color-primary: rgb(30, 30, 36);
+  --text-color-primary: rgb(254, 254, 254);
+  --bg-color-secondary: rgb(41, 39, 52);
+}
+
+.bg-color-secondary {
+  background-color: var(--bg-color-secondary);
+}
+
+body.theme-transition {
+    transition: var(--theme-transiton);
+}
+
+body.theme-transition .bg-color-secondary {
+    transition: var(--theme-transiton);
+}

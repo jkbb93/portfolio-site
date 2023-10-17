@@ -1,0 +1,14 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link:not(:last-child) {
+    margin-right: 40px;
+}
+
+.link {
+    width: 2rem;
+    height: 2rem;
+}

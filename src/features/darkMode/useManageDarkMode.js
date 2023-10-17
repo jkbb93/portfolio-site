@@ -12,9 +12,10 @@ const { getStoredValue, updateStoredValue } = manageLocalStorage("darkMode");
 
 function useManageDarkMode() {
   const [darkMode, setDarkMode] = useState(false);
-  const [hasSetInitial, setHasSetInitial] = useState(false);
   const systemSetToDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const hasMountedRef = useRef(false);
+  const hasSetInitialRef = useRef(false);
+  const isInitialRenderRef = useRef(true);
+  const prevSystemSettingRef = useRef(systemSetToDarkMode);
 
   /*
     Set darkMode on initial render, before browser paints.
@@ -22,7 +23,7 @@ function useManageDarkMode() {
     otherwise by current user system setting. 
   */
   useLayoutEffect(() => {
-    if (hasSetInitial) return;
+    if (hasSetInitialRef.current) return;
 
     const storedSetting = getStoredValue();
 
@@ -32,20 +33,23 @@ function useManageDarkMode() {
       setDarkMode(systemSetToDarkMode);
     }
 
-    setHasSetInitial(true);
-  }, [hasSetInitial, systemSetToDarkMode]);
+    hasSetInitialRef.current = true;
+  }, [systemSetToDarkMode]);
 
   /*
     Listen for changes to system setting after first render -
     e.g. when user changes their system setting
   */
   useEffect(() => {
-    if (!hasMountedRef.current) {
-      hasMountedRef.current = true;
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
       return;
     }
 
-    setDarkMode(systemSetToDarkMode);
+    if (systemSetToDarkMode !== prevSystemSettingRef.current) {
+      setDarkMode(systemSetToDarkMode);
+      prevSystemSettingRef.current = systemSetToDarkMode;
+    }
   }, [systemSetToDarkMode]);
 
   // Persist all setting changes to localStorage

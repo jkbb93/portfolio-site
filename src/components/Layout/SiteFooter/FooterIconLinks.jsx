@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+import { IconLink } from "../../shared";
 import {
   FaLinkedin as LinkedInIcon,
   FaGithub as GitHubIcon,
 } from "react-icons/fa6";
-import styles from "./IconLinks.module.css";
+import styles from "./FooterIconLinks.module.css";
 
-function IconLinks() {
+function FooterIconLinks() {
   const linkData = [
     { name: "github", icon: <GitHubIcon />, href: "https://github.com/jkbb93" },
     {
@@ -16,17 +16,20 @@ function IconLinks() {
   ];
 
   const links = linkData.map((link) => (
-    <motion.a
+    <IconLink
       key={link.name}
       href={link.href}
-      whileHover={{ scale: 1.15 }}
-      transition={{ type: "spring", stiffness: 500, damping: 20 }}
+      motionProps={{
+        whileHover: { scale: 1.2 },
+        transition: { type: "spring", stiffness: 500, damping: 20 },
+      }}
+      className={styles.link}
     >
       {link.icon}
-    </motion.a>
+    </IconLink>
   ));
 
-  return <nav className={styles.links}>{links}</nav>;
+  return <nav className={styles.nav}>{links}</nav>;
 }
 
-export default IconLinks;
+export default FooterIconLinks;
