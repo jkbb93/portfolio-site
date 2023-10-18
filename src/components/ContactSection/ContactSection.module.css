@@ -1,0 +1,15 @@
+.form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+}
+
+.input label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.input input {
+    width: 100%;
+}

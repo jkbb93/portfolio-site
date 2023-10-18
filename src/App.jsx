@@ -1,11 +1,14 @@
 import Layout from "./components/Layout";
 import ArticlePage from "./pages";
+import AboutSection from "./components/AboutSection";
+import SkillsSection from "./components/SkillsSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ContactSection from "./components/ContactSection";
 import { ScrollToLink } from "./components/shared";
 import { useDarkMode } from "./features/darkMode";
 import { useLayoutEffect, useEffect } from "react";
 import "./styles.css";
 import "./theme-styles.css";
-import ProjectsSection from "./components/ProjectsSection";
 
 function App() {
   const { darkMode } = useDarkMode();
@@ -30,27 +33,17 @@ function App() {
       const element = document.querySelector(hash);
 
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, []);
 
   return (
     <Layout>
+      <AboutSection />
+      <SkillsSection />
       <ProjectsSection />
-      <ArticlePage />
-      <div
-        style={{
-          height: "2000px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-        }}
-      >
-        <ScrollToLink to={{ x: 0, y: 0 }}>
-          <h1 id="skills">Hehe</h1>
-        </ScrollToLink>
-      </div>
+      <ContactSection />
     </Layout>
   );
 }

@@ -1,0 +1,27 @@
+.heading {
+    margin-bottom: 80px;
+}
+
+.icons-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 100px;
+  row-gap: 50px;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+}
+
+.icon > span {
+    font-weight: 500;
+}
+
+.icon > svg {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 16px;
+}

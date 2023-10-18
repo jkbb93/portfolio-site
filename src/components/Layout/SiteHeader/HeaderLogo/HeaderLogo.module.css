@@ -11,15 +11,34 @@
 
 .logo::after {
   content: "👍";
+  transform: translate(-50%, 100%) rotate(50deg);
+}
+
+.logo.bicep::after {
+  content: "💪";
+  transform: translate(-50%, 100%) rotate(50deg) scaleX(-1);
+}
+
+.logo::after {
   position: absolute;
-  top: -2px;
+  top: -3px;
   left: 108%;
   opacity: 0;
-  transform: translateY(100%);
-  transition: opacity 0.1s ease-out, transform 0.07s ease-out;
+  filter: blur(2px);
+  transition: opacity 0.1s ease-out, filter 0.2s ease-out,
+    transform 0.08s ease-out;
+}
+
+.logo:hover::after,
+.logo.bicep.hovered::after {
+  opacity: 1;
+  filter: blur(0px);
 }
 
 .logo:hover::after {
-  transform: translateY(0%);
-  opacity: 1;
+  transform: translate(0%, 0%) rotate(-2deg);
+}
+
+.logo.bicep.hovered::after {
+  transform: translate(0%, 0%) rotate(-2deg) scaleX(-1);
 }

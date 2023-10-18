@@ -4,12 +4,13 @@ import {
   duotoneDark,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-function Code({ children, language, darkMode = false }) {
+function Code({ language, code, darkMode = false }) {
   const style = darkMode ? duotoneDark : duotoneLight;
 
   const customStyle = {
     margin: 0,
     padding: 0,
+    lineHeight: "24px"
   };
 
   const lineNumberStyle = {
@@ -19,7 +20,7 @@ function Code({ children, language, darkMode = false }) {
     msUserSelect: "none",
     padding: "0px",
     marginRight: "24px",
-    minWidth: "0px"
+    minWidth: "0px",
   };
 
   return (
@@ -30,7 +31,7 @@ function Code({ children, language, darkMode = false }) {
       customStyle={customStyle}
       lineNumberStyle={lineNumberStyle}
     >
-      {children}
+      {code}
     </SyntaxHighlighter>
   );
 }

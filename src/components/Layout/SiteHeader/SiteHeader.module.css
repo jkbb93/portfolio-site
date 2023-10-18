@@ -4,7 +4,8 @@
   top: 0;
   z-index: 1000;
   padding: 16px 5vw;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .header > nav {
@@ -14,4 +15,8 @@
   align-items: center;
   max-width: 1440px;
   min-height: 10vh;
+}
+
+#logoo:hover header img {
+  opacity: 0;
 }

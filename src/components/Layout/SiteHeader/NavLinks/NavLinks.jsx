@@ -13,7 +13,7 @@ function NavLinks() {
   const links = linkData.map((link) => (
     <motion.li
       key={link.text}
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.15 }}
       transition={{ type: "spring", stiffness: 500, damping: 17 }}
     >
       <ScrollToLink to={link.to} className={styles.link}>
@@ -22,8 +22,7 @@ function NavLinks() {
     </motion.li>
   ));
 
-  return <ul className={styles.links}>{links}
-  </ul>;
+  return <ul className={styles["links-list"]}>{links}</ul>;
 }
 
 export default NavLinks;

@@ -4,8 +4,13 @@ import CodeExampleHeader from "./CodeExampleHeader";
 import Code from "./Code";
 import styles from "./CodeExample.module.css";
 
-function CodeExample({ children, language = "javascript", fileName }) {
-  const { darkMode } = useDarkMode();
+function CodeExample({
+  code = "",
+  language = "javascript",
+  fileName,
+  withHeader = true,
+  darkMode = true
+}) {
   const [wrapperStyle, setWrapperStyle] = useState(null);
   const wrapperRef = useRef(null);
 
@@ -20,15 +25,22 @@ function CodeExample({ children, language = "javascript", fileName }) {
   }, [darkMode]);
 
   return (
-    <div ref={wrapperRef} className={styles.wrapper} style={wrapperStyle}>
-      <CodeExampleHeader
-        fileName={fileName}
-        code={children}
-        darkMode={darkMode}
-      />
-      <Code language={language} darkMode={darkMode}>
-        {children}
-      </Code>
+    <div
+      ref={wrapperRef}
+      className={styles.wrapper}
+      style={{
+        padding: withHeader ? "16px 24px 24px" : "24px",
+        ...wrapperStyle,
+      }}
+    >
+      {withHeader && (
+        <CodeExampleHeader
+          fileName={fileName}
+          code={code}
+          darkMode={darkMode}
+        />
+      )}
+      <Code language={language} code={code} darkMode={darkMode} />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 body {
-  --bg-color-primary: rgb(254, 254, 254);
+  --bg-color-primary: rgb(245, 245, 245);
   --text-color-primary: rgb(30, 30, 36);
   --bg-color-secondary: rgb(250, 248, 244);
-  --theme-transiton: background-color 250ms ease-out, color 250ms ease-out; 
+  --theme-transiton: background-color 250ms ease-out, color 250ms ease-out;
 
   background-color: var(--bg-color-primary);
   color: var(--text-color-primary);
@@ -20,9 +20,9 @@ body.dark {
 }
 
 body.theme-transition {
-    transition: var(--theme-transiton);
+  transition: var(--theme-transiton);
 }
 
 body.theme-transition .bg-color-secondary {
-    transition: var(--theme-transiton);
+  transition: var(--theme-transiton);
 }
