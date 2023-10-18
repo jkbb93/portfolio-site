@@ -1,0 +1,16 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+  min-width: 50vw;
+}
+
+.input-slot label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.button {
+  margin-top: 16px;
+}

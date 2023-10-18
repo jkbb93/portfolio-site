@@ -9,7 +9,7 @@ function ScrollToLink({
   children,
   to: scrollTarget,
   onClick: onClickCallback,
-  className,
+  className = "",
   ...restProps
 }) {
   const scrollToElement = (id) => {

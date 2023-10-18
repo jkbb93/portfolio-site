@@ -1,0 +1,7 @@
+.hero {
+  padding: 10vh 7vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  column-gap: 5vw;
+}

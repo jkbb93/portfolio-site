@@ -1,6 +1,6 @@
 import styles from "./Card.module.css";
 
-function Card({ children, className }) {
+function Card({ children, className = "" }) {
   return <div className={`${styles.card} ${className}`}>{children}</div>;
 }
 

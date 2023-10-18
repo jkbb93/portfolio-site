@@ -7,7 +7,7 @@ const ThemeableContainer = forwardRef(function ThemeableContainer(
     children,
     element: Element = "div",
     colorScheme = "primary",
-    className,
+    className = "",
     ...restProps
   },
   forwardedRef

@@ -6,7 +6,7 @@ import styles from "./Section.module.css";
   Page section with animated entry using IntersectionObserver
 */
 
-function Section({ children, className, ...restProps }) {
+function Section({ children, className = "", ...restProps }) {
   const [inView, setInView] = useState(false);
 
   const callback = useCallback((entries) => {

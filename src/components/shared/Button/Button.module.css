@@ -1,0 +1,12 @@
+.button {
+  /* Color scheme is inverse of page colors */
+  background-color: var(--text-color-primary);
+  color: var(--bg-color-primary);
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+}

@@ -11,7 +11,7 @@
   justify-content: center;
   opacity: 0;
   filter: blur(2px);
-  transition: opacity 700ms ease-out, filter 500ms ease-out;
+  transition: opacity 300ms ease-out, filter 300ms ease-out;
 }
 
 .in-view {

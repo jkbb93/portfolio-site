@@ -1,0 +1,23 @@
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback {
+  text-align: center;
+}
+
+.feedback > svg {
+  width: 5rem;
+  height: 5rem;
+}
+
+.button {
+  margin-top: 8px;
+}

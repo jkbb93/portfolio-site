@@ -1,4 +1,5 @@
 import { Section, Card, SectionHeading } from "../shared";
+import { FaRoadBarrier as BarrierIcon } from "react-icons/fa6";
 import styles from "./ProjectsSection.module.css";
 
 function ProjectsSection() {
@@ -6,9 +7,13 @@ function ProjectsSection() {
     <Section id="projects">
       <SectionHeading>Some Recent Projects</SectionHeading>
       <div className={styles.cards}>
-        <Card className={styles.card}>1</Card>
-        <Card className={styles.card}>2</Card>
-        <Card className={styles.card}>3</Card>
+        <Card className={styles.card}>
+          <BarrierIcon />
+          <h2>Under Construction</h2>
+        </Card>
+        {/* <Card>1</Card>
+        <Card>2</Card>
+        <Card>3</Card> */}
       </div>
     </Section>
   );

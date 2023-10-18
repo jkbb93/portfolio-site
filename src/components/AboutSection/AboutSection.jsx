@@ -1,18 +1,15 @@
-import { Section, SectionHeading, CodeExample } from "../shared";
-
-const code = `class Jake {
-  constructor() {
-    this.name = "Jake"
-    this.role = "Developer"
-    this.skills = ["Frontend", "Backend"];
-  }
-}`;
+import { Section } from "../shared";
+import styles from "./AboutSection.module.css";
+import HeroCodeExample from "./HeroCodeExample";
+import HeroHeading from "./HeroHeading";
 
 function AboutSection() {
   return (
-    <Section id="about">
-      <SectionHeading>Full Stack Developer</SectionHeading>
-      <CodeExample code={code} withHeader={false} />
+    <Section id="about" className={styles.section}>
+      <div className={styles.hero}>
+        <HeroHeading />
+        <HeroCodeExample />
+      </div>
     </Section>
   );
 }
