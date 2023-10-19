@@ -1,6 +1,7 @@
 import { useDarkModeStyles } from "./features/darkMode";
 import { useScrollToAnchor } from "./hooks";
 import Layout from "./components/Layout";
+import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import SkillsSection from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <Layout>
+      <HeroSection />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />

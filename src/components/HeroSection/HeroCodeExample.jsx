@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CodeExample } from "../shared";
+import styles from "./HeroCodeExample.module.css";
 
 const code = `class Jake {
     constructor() {
@@ -12,8 +13,9 @@ const code = `class Jake {
 function HeroCodeExample() {
   return (
     <motion.div
-      whileHover={{ scale: 1.13, rotate: 0.5 }}
+      whileHover={{ scale: 1.14, rotate: 1 }}
       transition={{ type: "spring", stiffness: 500, damping: 20 }}
+      className={styles["code-example"]}
     >
       <CodeExample code={code} withHeader={true} />
     </motion.div>

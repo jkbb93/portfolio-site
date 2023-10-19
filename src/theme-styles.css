@@ -1,7 +1,14 @@
 body {
-  --bg-color-primary: rgb(246, 246, 248);
-  --text-color-primary: rgb(30, 30, 36);
-  --bg-color-secondary: rgb(250, 248, 244);
+  --color-white: rgb(254, 254, 254);
+  --color-black: rgb(30, 30, 36);
+  --color-cream: (250, 248, 244);
+  --color-grey-white: rgb(255, 250, 255);
+  --color-slate: rgb(41, 39, 52);
+
+  --bg-color-primary: var(--color-grey-white);
+  --text-color-primary: var(--color-black);
+  --border-subtle: 1px solid rgba(30, 30, 36, 0.11);
+  --bg-color-secondary: var(--color-cream);
   --theme-transiton: background-color 250ms ease-out, color 250ms ease-out;
 
   background-color: var(--bg-color-primary);
@@ -10,9 +17,10 @@ body {
 }
 
 body.dark {
-  --bg-color-primary: rgb(30, 30, 36);
-  --text-color-primary: rgb(254, 254, 254);
-  --bg-color-secondary: rgb(41, 39, 52);
+  --bg-color-primary: var(--color-black);
+  --text-color-primary: var(--color-white);
+  --border-subtle: 1px solid rgba(254, 254, 254, 0.07);
+  --bg-color-secondary: var(--color-slate);
 }
 
 .bg-color-secondary {

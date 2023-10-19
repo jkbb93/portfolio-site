@@ -29,7 +29,7 @@ function HeaderIconLinks() {
         </IconLink>
       ));
     
-      return <nav className={styles.nav}>{links}</nav>;
+      return <div className={styles.wrapper}>{links}</div>;
 }
 
 export default HeaderIconLinks;

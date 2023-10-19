@@ -1,44 +1,72 @@
+import { useRef, useState, useLayoutEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "../../../hooks";
 import HeaderLogo from "./HeaderLogo";
-import NavLinks from "./NavLinks";
-import HeaderIconLinks from "./HeaderIconLinks";
-import DarkModeToggler from "./DarkModeToggler";
+import LargeScreenNavItems from "./LargeScreenNavItems";
+import SmallScreenNavItems from "./SmallScreenNavItems";
+import HeaderNavDrawer from "./HeaderNavDrawer";
 import styles from "./SiteHeader.module.css";
-import { useLayoutEffect, useRef } from "react";
 
 function SiteHeader() {
+  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState("0px");
   const headerRef = useRef(null);
 
   /*
-   Set html element's scrollPaddingTop to header height, because 
-   using a sticky-positioned header and need to scroll elements 
-   into view; without setting scroll padding, elements will be 
-   covered by sticky header
-   */
+  Get headerHeight to use for scroll padding (below), and to calculate
+  HeaderNavDrawer position and height
+  */
   useLayoutEffect(() => {
     if (!headerRef.current) return;
 
-    const setHTMLScrollPadding = () => {
+    const updateHeaderHeight = () => {
       const { height } = headerRef.current.getBoundingClientRect();
-
-      const html = document.querySelector("html");
-      html.style.scrollPaddingTop = `${height}px`;
+      setHeaderHeight(`${height}px`);
     };
 
-    setHTMLScrollPadding();
+    updateHeaderHeight();
 
-    window.addEventListener("resize", setHTMLScrollPadding);
-    return () => window.removeEventListener("resize", setHTMLScrollPadding);
+    window.addEventListener("resize", updateHeaderHeight);
+    return () => window.removeEventListener("resize", updateHeaderHeight);
   }, []);
 
+  /*
+  Header is sticky - adding scrollPadding equivalent to the header height
+  so that elements aren't covered by sticky header when scrolled to
+  via scrollIntoView 
+  */
+  useLayoutEffect(() => {
+    const html = document.querySelector("html");
+    html.style.scrollPaddingTop = headerHeight;
+  }, [headerHeight]);
+
+  const handleDrawerToggle = () => setDrawerOpen((prev) => !prev);
+  const handleDrawerClose = () => setDrawerOpen(false);
+
   return (
-    <header ref={headerRef} className={styles.header}>
-      <nav>
-        <HeaderLogo />
-        <NavLinks />
-        <HeaderIconLinks />
-        <DarkModeToggler />
-      </nav>
-    </header>
+    <>
+      <header ref={headerRef} className={styles.header}>
+        <nav className={styles.nav}>
+          <HeaderLogo onClick={handleDrawerClose} />
+          {isLargeScreen ? (
+            <LargeScreenNavItems />
+          ) : (
+            <SmallScreenNavItems onDrawerToggle={handleDrawerToggle} />
+          )}
+        </nav>
+      </header>
+      {!isLargeScreen && (
+        <AnimatePresence>
+          {drawerOpen && (
+            <HeaderNavDrawer
+              positionTop={headerHeight}
+              onClose={handleDrawerClose}
+            />
+          )}
+        </AnimatePresence>
+      )}
+    </>
   );
 }
 

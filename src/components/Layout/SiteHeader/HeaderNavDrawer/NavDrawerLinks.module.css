@@ -1,0 +1,15 @@
+.list {
+    padding: 0;
+    margin: 0;
+}
+
+.list > li {
+    list-style: none;
+    border-bottom: var(--border-subtle);
+}
+
+.link {
+    display: block;
+    padding: 40px 5vw;
+    font-weight: 700;
+}

@@ -4,7 +4,7 @@ import styles from "./ContactSection.module.css";
 
 function ContactSection() {
   return (
-    <Section id="contact">
+    <Section id="contact" className={styles.section}>
       <Card className={styles.card}>
         <ContactWidget />
       </Card>

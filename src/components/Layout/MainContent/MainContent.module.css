@@ -1,8 +1,14 @@
 .wrapper {
-  padding: 1rem 5vw 0;
+  padding: 0 5vw;
 }
 
 .wrapper > main {
     max-width: 1440px;
     margin: auto;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 0 10vw;
+  }
 }

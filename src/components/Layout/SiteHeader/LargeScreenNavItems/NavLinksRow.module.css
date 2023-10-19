@@ -1,11 +1,11 @@
-.links-list {
+.list {
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
 }
 
-.links-list li {
+.list li {
   list-style: none;
   font-weight: 500;
   display: flex;

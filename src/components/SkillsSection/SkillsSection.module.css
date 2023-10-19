@@ -1,12 +1,12 @@
 .heading {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .icons-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 100px;
-  row-gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 6vw;
+  row-gap: 40px;
 }
 
 .icon {
@@ -17,11 +17,17 @@
 }
 
 .icon > span {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .icon > svg {
   width: 5rem;
   height: 5rem;
   margin-bottom: 16px;
+}
+
+@media (min-width: 576px) {
+  .icons-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

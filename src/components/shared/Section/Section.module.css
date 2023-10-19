@@ -1,6 +1,6 @@
 .section {
   min-height: 100vh;
-  padding: 5vh 32px;
+  padding: 5vh 0;
 }
 
 .content {

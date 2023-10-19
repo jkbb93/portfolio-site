@@ -43,7 +43,7 @@ function ContactForm({
           id={messageId}
           name="message"
           type="textarea"
-          rows="5"
+          rows="4"
           placeholder="What's up?"
           required={true}
           value={values.message}

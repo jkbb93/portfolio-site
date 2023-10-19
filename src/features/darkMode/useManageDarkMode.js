@@ -11,7 +11,7 @@ import { manageLocalStorage } from "../../utils";
 const { getStoredValue, updateStoredValue } = manageLocalStorage("darkMode");
 
 function useManageDarkMode() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const systemSetToDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const hasSetInitialRef = useRef(false);
   const isInitialRenderRef = useRef(true);
@@ -20,7 +20,7 @@ function useManageDarkMode() {
   /*
     Set darkMode on initial render, before browser paints.
     Preferably by previously saved setting in localStorage but 
-    otherwise by current user system setting. 
+    otherwise leave set to true as default
   */
   useLayoutEffect(() => {
     if (hasSetInitialRef.current) return;
@@ -29,10 +29,8 @@ function useManageDarkMode() {
 
     if (typeof storedSetting === "boolean") {
       setDarkMode(storedSetting);
-    } else {
-      setDarkMode(systemSetToDarkMode);
-    }
-
+    } 
+    
     hasSetInitialRef.current = true;
   }, [systemSetToDarkMode]);
 
