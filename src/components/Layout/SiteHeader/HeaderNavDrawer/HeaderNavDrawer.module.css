@@ -3,6 +3,7 @@
   width: 100%;
   background-color: var(--bg-color-primary);
   z-index: 990;
+  overflow: auto;
 }
 
 .icon-links {

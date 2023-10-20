@@ -4,15 +4,15 @@ import FormFeedbackOverlay from "./FormFeedbackOverlay";
 import useForm from "../useForm";
 import styles from "./ContactWidget.module.css";
 
-const statuses = {
-  idle: "idle",
-  loading: "loading",
-  success: "success",
-  error: "error",
-};
-
 function ContactWidget() {
+  const statuses = {
+    idle: "idle",
+    loading: "loading",
+    success: "success",
+    error: "error",
+  };
   const [status, setStatus] = useState(statuses.idle);
+
   const { values, handleChange, clearForm } = useForm({
     name: "",
     email: "",
@@ -22,21 +22,17 @@ function ContactWidget() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-
-      if (process.env.NODE_ENV === "development") {
-        setStatus(statuses.success);
-        return;
-      }
-
       setStatus(statuses.loading);
+
+      const formData = {
+        "form-name": "contact", // For Netlify Forms
+        ...values
+      };
 
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact", // For Netlify forms
-          ...values,
-        }).toString(),
+        body: new URLSearchParams(formData).toString(),
       });
 
       if (!response.ok) {
