@@ -7,6 +7,10 @@
   </head>
   <body>
     <!-- Site contact form as static HTML, to enable Netlify Forms -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden></form>
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
   </body>
 </html>
