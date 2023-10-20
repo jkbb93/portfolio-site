@@ -7,6 +7,14 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Static HTML version of contact form for Netlify Forms -->
+    <form name="contact" method="post" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+    
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
