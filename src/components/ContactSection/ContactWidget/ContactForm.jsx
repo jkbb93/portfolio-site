@@ -49,7 +49,6 @@ function ContactForm({
           value={values.message}
           onChange={handleChange}
         />
-        <input type="hidden" name="form-name" value="contact" />
       </div>
       <Button type="submit" className={styles.button}>
         Submit

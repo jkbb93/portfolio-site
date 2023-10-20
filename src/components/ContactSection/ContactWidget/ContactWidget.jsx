@@ -33,7 +33,10 @@ function ContactWidget() {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(values).toString(),
+        body: new URLSearchParams({
+          "form-name": "contact", // For Netlify forms
+          ...values,
+        }).toString(),
       });
 
       if (!response.ok) {
