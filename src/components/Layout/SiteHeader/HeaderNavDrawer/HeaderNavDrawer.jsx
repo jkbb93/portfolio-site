@@ -5,7 +5,7 @@ import NavDrawerLinks from "./NavDrawerLinks";
 import HeaderIconLinks from "../HeaderIconLinks";
 import styles from "./HeaderNavDrawer.module.css";
 
-function HeaderNavDrawer({ positionTop = "", onClose: handleClose }) {
+function HeaderNavDrawer({ positionTop = "0px", onClose: handleClose }) {
   // Disable scroll on body while component is rendered
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -26,7 +26,7 @@ function HeaderNavDrawer({ positionTop = "", onClose: handleClose }) {
       className={styles.drawer}
       style={{
         top: positionTop,
-        height: `calc(100vh - ${positionTop})`,
+        height: `calc(100% - ${positionTop})`,
       }}
     >
       <NavDrawerLinks onLinkClick={handleClose} />

@@ -2,16 +2,23 @@
   background-color: var(--bg-color-primary);
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 999;
-  padding: 16px 5vw;
+  padding: 24px 5vw;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: var(--border-subtle);
 }
 
 .nav {
+  margin: auto;
+  max-width: 1440px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1440px;
-  min-height: 10vh;
+}
+
+@media (min-width: 576px) {
+  .header {
+    padding: 36px 5vw;
+  }
 }

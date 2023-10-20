@@ -1,4 +1,7 @@
 .code-example {
     color: var(--color-white);
     fill: var(--color-white);
+    transform-origin: top left;
+    position: absolute;
+    left: 0;
 }

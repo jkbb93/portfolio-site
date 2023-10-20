@@ -4,7 +4,7 @@ import FormFeedbackOverlay from "./FormFeedbackOverlay";
 import useForm from "../useForm";
 import styles from "./ContactWidget.module.css";
 
-function ContactWidget() {
+function ContactWidget({ onSubmit: onSubmitCallback }) {
   const statuses = {
     idle: "idle",
     loading: "loading",
@@ -26,7 +26,7 @@ function ContactWidget() {
 
       const formData = {
         "form-name": "contact", // For Netlify Forms
-        ...values
+        ...values,
       };
 
       const response = await fetch("/", {
@@ -43,6 +43,10 @@ function ContactWidget() {
     } catch (submissionError) {
       setStatus(statuses.error);
       console.error(submissionError);
+    }
+
+    if (typeof onSubmitCallback === "function") {
+      onSubmitCallback();
     }
   };
 

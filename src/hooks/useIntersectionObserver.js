@@ -33,11 +33,11 @@ function useIntersectionObserver({
   }, [callback, options, elementNode]);
 
   const updateElementNode = useCallback((node) => {
-    if (node instanceof Node) {
+    if (node instanceof Node || node === null) {
       setElementNode(node);
     } else {
       console.warn(
-        "setElement from useIntersectionObserver must receive a valid DOM Node as its argument"
+        "setElement from useIntersectionObserver must receive a valid DOM Node, or null, as its argument"
       );
     }
   }, []);

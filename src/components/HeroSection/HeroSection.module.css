@@ -2,9 +2,8 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  column-gap: 4vw;
   row-gap: 5vh;
-  padding: 5vh 0;
+  padding: 5vh 0vw;
   width: 100%;
   overflow: hidden;
 }
@@ -12,6 +11,7 @@
 @media (min-width: 1024px) {
   .hero {
     grid-template-columns: 1fr 1fr;
-    padding: 10vh 5vw;
+    /* padding: 10vh 5vw; */
+    /* padding: 6vh 5vw; */
   }
 }

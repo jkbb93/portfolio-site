@@ -27,6 +27,7 @@ function Code({ language, code, darkMode = false }) {
     <SyntaxHighlighter
       language={language}
       showLineNumbers={true}
+      wrapLines={true}
       style={style}
       customStyle={customStyle}
       lineNumberStyle={lineNumberStyle}

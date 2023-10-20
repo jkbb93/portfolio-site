@@ -10,9 +10,10 @@ const code = `class Jake {
     }
 }`;
 
-function HeroCodeExample() {
+function HeroCodeExample({ codeExampleRef }) {
   return (
     <motion.div
+      ref={codeExampleRef}
       whileHover={{ scale: 1.14, rotate: 1 }}
       transition={{ type: "spring", stiffness: 500, damping: 20 }}
       className={styles["code-example"]}

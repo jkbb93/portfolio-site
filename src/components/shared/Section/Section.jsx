@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { forwardRef, useState, useCallback } from "react";
 import { useIntersectionObserver } from "../../../hooks";
 import styles from "./Section.module.css";
 
@@ -6,7 +6,10 @@ import styles from "./Section.module.css";
   Page section with animated entry using IntersectionObserver
 */
 
-function Section({ children, className = "", ...restProps }) {
+const Section = forwardRef(function Section(
+  { children, className = "", ...restProps },
+  passedRef
+) {
   const [inView, setInView] = useState(false);
 
   const callback = useCallback((entries) => {
@@ -21,9 +24,17 @@ function Section({ children, className = "", ...restProps }) {
     },
   });
 
+  const assignRefs = (node) => {
+    setElement(node);
+
+    if (passedRef && typeof passedRef === "object") {
+      passedRef.current = node;
+    }
+  };
+
   return (
     <section
-      ref={setElement}
+      ref={assignRefs}
       className={`${styles.section} ${className}`}
       {...restProps}
     >
@@ -36,6 +47,6 @@ function Section({ children, className = "", ...restProps }) {
       </div>
     </section>
   );
-}
+});
 
 export default Section;

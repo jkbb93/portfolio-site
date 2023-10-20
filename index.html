@@ -9,12 +9,19 @@
     <div id="root"></div>
 
     <!-- Static HTML version of contact form for Netlify Forms -->
-    <form name="contact" method="post" netlify netlify-honeypot="bot-field" hidden>
+    <form
+      netlify
+      netlify-honeypot="bot-field"
+      name="contact"
+      method="post"
+      hidden
+    >
+      <input type="text" name="bot-field" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <textarea name="message"></textarea>
     </form>
-    
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
