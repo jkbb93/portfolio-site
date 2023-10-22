@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./HeroHeading.module.css";
 
 function HeroHeading() {
+  const [shouldRun, setShouldRun] = useState(true);
   const [spanMinWidth, setSpanMinWidth] = useState(0);
   const [index, setIndex] = useState(0);
   const ghostSpanRef = useRef(null);
@@ -12,6 +13,7 @@ function HeroHeading() {
 
   // Cycle through technologies by setting a new index every X milliseconds
   useEffect(() => {
+    if (!shouldRun) return;
     const cycleTime = 2000;
 
     const timeout = setTimeout(() => {
@@ -20,14 +22,40 @@ function HeroHeading() {
     }, cycleTime);
 
     return () => clearTimeout(timeout);
-  }, [index, numberOfTechnologies]);
+  }, [shouldRun, index, numberOfTechnologies]);
+
+  /*
+   Stop running when document not visible - e.g. browser tab switches,
+   then restart when document is visible again. 
+   This is to solve glitches caused by browser optimisations affecting
+   timeout when the document is not visible.
+   */
+  useEffect(() => {
+    const handleDocumentVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        setShouldRun(true);
+      } else {
+        setShouldRun(false);
+      }
+    };
+
+    document.addEventListener(
+      "visibilitychange",
+      handleDocumentVisibilityChange
+    );
+    return () =>
+      document.removeEventListener(
+        "visibilitychange",
+        handleDocumentVisibilityChange
+      );
+  }, []);
 
   /*
   ghostSpan below is a replica of the 'sliding-text' span,
   but it is filled with the longest-named technology as its
   text content. This is measured, and its width is used for 
-  the sliding-text span's minWidth; this is so the sliding-text
-  span has a consistent width so that it won't cause page content
+  the sliding-text span's minWidth; this is so that the sliding-text
+  span has a consistent width, and won't cause page content
   to shift when its text content is longer/shorter
   */
   useLayoutEffect(() => {
@@ -39,25 +67,9 @@ function HeroHeading() {
     setSpanMinWidth(width + extraWidth);
   }, []);
 
-  const getLongestTechnologyName = () => {
-    let longest = "";
-
-    technologies.forEach((technology) => {
-      if (technology.length > longest.length) {
-        longest = technology;
-      }
-    });
-
-    return longest;
-  };
-
-  const ghostSpan = (
-    <span
-      ref={ghostSpanRef}
-      className={`${styles["sliding-text"]} ${styles.ghost}`}
-    >
-      {getLongestTechnologyName()}
-    </span>
+  const longestTechnologyName = technologies.reduce(
+    (longestSoFar, technology) =>
+      technology.length > longestSoFar.length ? technology : longestSoFar
   );
 
   return (
@@ -89,7 +101,12 @@ function HeroHeading() {
           {technologies[index]}
         </motion.span>
       </AnimatePresence>
-      {ghostSpan}
+      <span
+        ref={ghostSpanRef}
+        className={`${styles["sliding-text"]} ${styles.ghost}`}
+      >
+        {longestTechnologyName}
+      </span>
     </span>
   );
 }

@@ -8,17 +8,17 @@ function ProjectsSection() {
     <Section id="projects">
       <SectionHeading>Some Recent Projects</SectionHeading>
       <div className={styles.cards}>
-        {/* <Card className={styles.card}>
+        <Card className={styles.card}>
           <BarrierIcon />
           <h2>Under Construction</h2>
-        </Card> */}
-        <Card>
+        </Card>
+        {/* <Card>
           <img
             src={skysearcherImage}
             alt=""
             style={{ width: "400px", borderRadius: "4px" }}
           />
-        </Card>
+        </Card> */}
         {/* <Card>1</Card>
         <Card>2</Card>
         <Card>3</Card> */}
