@@ -5,7 +5,7 @@ import NavDrawerLinks from "./NavDrawerLinks";
 import HeaderIconLinks from "../HeaderIconLinks";
 import styles from "./HeaderNavDrawer.module.css";
 
-function HeaderNavDrawer({ positionTop = "0px", onClose: handleClose }) {
+function HeaderNavDrawer({ id, positionTop = "0px", onClose: handleClose }) {
   // Disable scroll on body while component is rendered
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -18,7 +18,9 @@ function HeaderNavDrawer({ positionTop = "0px", onClose: handleClose }) {
   const openAnimationState = { opacity: 1, y: "0px", filter: "blur(0px)" };
 
   const component = (
-    <motion.div
+    <motion.nav
+      id={id}
+      aria-label="Navigation menu"
       initial={closedAnimationState}
       animate={openAnimationState}
       exit={closedAnimationState}
@@ -33,7 +35,7 @@ function HeaderNavDrawer({ positionTop = "0px", onClose: handleClose }) {
       <div className={styles["icon-links"]}>
         <HeaderIconLinks />
       </div>
-    </motion.div>
+    </motion.nav>
   );
 
   return createPortal(component, document.body);

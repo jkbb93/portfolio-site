@@ -22,7 +22,20 @@ function ContactWidget({ onSubmit: onSubmitCallback }) {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+
+      if (typeof onSubmitCallback === "function") {
+        onSubmitCallback();
+      }
+
       setStatus(statuses.loading);
+
+      // Simulate loading and success in dev environment
+      if (process.env.NODE_ENV === "development") {
+        setTimeout(() => {
+          setStatus(statuses.success);
+        }, 1500);
+        return;
+      }
 
       const formData = {
         "form-name": "contact", // For Netlify Forms
@@ -44,10 +57,6 @@ function ContactWidget({ onSubmit: onSubmitCallback }) {
       setStatus(statuses.error);
       console.error(submissionError);
     }
-
-    if (typeof onSubmitCallback === "function") {
-      onSubmitCallback();
-    }
   };
 
   const handleConfirmSuccess = () => {
@@ -64,7 +73,7 @@ function ContactWidget({ onSubmit: onSubmitCallback }) {
         style={{ visibility: status === statuses.idle ? "visible" : "hidden" }}
       >
         <h1 className={styles.heading}>Get In Touch</h1>
-        <p>Want to ask me something? Let's chat!</p>
+        <p>Want to ask me something? Let&apos;s chat!</p>
         <ContactForm
           values={values}
           onChange={handleChange}

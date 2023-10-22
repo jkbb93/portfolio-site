@@ -6,18 +6,21 @@ function HeroHeading() {
   const [spanMinWidth, setSpanMinWidth] = useState(0);
   const [index, setIndex] = useState(0);
   const ghostSpanRef = useRef(null);
-  
-  const technologies = ["Javascript", "React", "Node.js", "CSS", "HTML"];
-  const cycleTime = 2000;
 
-  // Cycle through technologies by setting a new index
+  const technologies = ["Javascript", "React", "Node.js", "CSS", "HTML"];
+  const numberOfTechnologies = technologies.length;
+
+  // Cycle through technologies by setting a new index every X milliseconds
   useEffect(() => {
+    const cycleTime = 2000;
+
     const timeout = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % technologies.length);
+      // Increment index, but wrap to number of technologies
+      setIndex((prev) => (prev + 1) % numberOfTechnologies);
     }, cycleTime);
 
     return () => clearTimeout(timeout);
-  }, [index]);
+  }, [index, numberOfTechnologies]);
 
   /*
   ghostSpan below is a replica of the 'sliding-text' span,
@@ -31,8 +34,9 @@ function HeroHeading() {
     if (!ghostSpanRef.current) return;
 
     const { width } = ghostSpanRef.current.getBoundingClientRect();
+    const extraWidth = 8; // Adds a little extra to account for letter spacing, etc.
 
-    setSpanMinWidth(width + 8);
+    setSpanMinWidth(width + extraWidth);
   }, []);
 
   const getLongestTechnologyName = () => {
@@ -61,7 +65,7 @@ function HeroHeading() {
       <h1>Full Stack Developer building cool stuff with </h1>
       <AnimatePresence mode="wait">
         <motion.span
-          key={index}
+          key={technologies[index]}
           initial={{
             opacity: 0,
             y: 0,

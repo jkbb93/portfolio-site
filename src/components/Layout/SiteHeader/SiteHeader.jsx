@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState, useId, useLayoutEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "../../../hooks";
 import HeaderLogo from "./HeaderLogo";
@@ -8,10 +8,11 @@ import HeaderNavDrawer from "./HeaderNavDrawer";
 import styles from "./SiteHeader.module.css";
 
 function SiteHeader() {
-  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState("0px");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
   const headerRef = useRef(null);
+  const navDrawerId = useId();
 
   /*
   Get headerHeight to use for scroll padding (below), and to calculate
@@ -52,7 +53,11 @@ function SiteHeader() {
           {isLargeScreen ? (
             <LargeScreenNavItems />
           ) : (
-            <SmallScreenNavItems onDrawerToggle={handleDrawerToggle} />
+            <SmallScreenNavItems
+              onDrawerToggle={handleDrawerToggle}
+              drawerOpen={drawerOpen}
+              togglerAriaControls={navDrawerId}
+            />
           )}
         </nav>
       </header>
@@ -60,6 +65,7 @@ function SiteHeader() {
         <AnimatePresence>
           {drawerOpen && (
             <HeaderNavDrawer
+              id={navDrawerId}
               positionTop={headerHeight}
               onClose={handleDrawerClose}
             />

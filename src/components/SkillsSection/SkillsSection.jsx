@@ -1,27 +1,31 @@
 import { motion } from "framer-motion";
-import { Section, SectionHeading } from "../shared";
+import { FaTerminal as CommandLineIcon } from "react-icons/fa";
 import {
   JSIcon,
   ReactIcon,
   NodeIcon,
+  ReduxIcon,
   HTMLIcon,
   CSSIcon,
   GitIcon,
 } from "./icons";
+import { Section, SectionHeading } from "../shared";
 import styles from "./SkillsSection.module.css";
 
 function SkillsSection() {
   const iconData = [
     { label: "Javascript", icon: <JSIcon /> },
-    { label: "React", icon: <ReactIcon /> },
     { label: "Node.js", icon: <NodeIcon /> },
-    { label: "HTML", icon: <HTMLIcon /> },
-    { label: "CSS", icon: <CSSIcon /> },
+    { label: "React", icon: <ReactIcon /> },
+    { label: "Redux", icon: <ReduxIcon /> },
+    { label: "HTML5", icon: <HTMLIcon /> },
+    { label: "CSS3", icon: <CSSIcon /> },
     { label: "Git", icon: <GitIcon /> },
+    { label: "Command Line", icon: <CommandLineIcon /> },
   ];
 
   const icons = iconData.map((data) => (
-    <motion.div
+    <motion.li
       key={data.label}
       whileHover={{ scale: 1.15 }}
       transition={{ type: "spring", stiffness: 500, damping: 20 }}
@@ -29,13 +33,13 @@ function SkillsSection() {
     >
       {data.icon}
       <span>{data.label}</span>
-    </motion.div>
+    </motion.li>
   ));
 
   return (
     <Section id="skills">
       <SectionHeading className={styles.heading}>Skills</SectionHeading>
-      <div className={styles["icons-wrapper"]}>{icons}</div>
+      <ul className={styles["icon-list"]}>{icons}</ul>
     </Section>
   );
 }
