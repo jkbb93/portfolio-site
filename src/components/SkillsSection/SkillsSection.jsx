@@ -8,7 +8,7 @@ import {
   HTMLIcon,
   CSSIcon,
   GitIcon,
-} from "./icons";
+} from "../../assets/icons";
 import { Section, SectionHeading } from "../shared";
 import styles from "./SkillsSection.module.css";
 

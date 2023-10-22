@@ -1,17 +1,31 @@
 import { motion } from "framer-motion";
 import styles from "./Button.module.css";
 
-function Button({ children, className = "", ...restProps }) {
+function Button({
+  children,
+  className = "",
+  type = "button",
+  asLink = false,
+  href = "",
+  ...restProps
+}) {
+  if (asLink && href === "") {
+    console.warn("Button component expects 'href' prop when asLink is true.");
+  }
+
+  const Element = asLink ? motion.a : motion.button;
+  const elementProps = asLink ? { href } : { type };
+
   return (
-    <motion.button
+    <Element
+      {...elementProps}
       whileHover={{ opacity: 0.8 }}
       transition={{ duration: 0.05 }}
-      type="button"
-      className={`${styles.button} ${className}`}
+      className={`${styles.button} ${asLink ? styles.link : ""} ${className}`}
       {...restProps}
     >
       {children}
-    </motion.button>
+    </Element>
   );
 }
 
