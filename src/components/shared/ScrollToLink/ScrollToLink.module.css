@@ -1,9 +1,9 @@
 .link {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .link:active {
-    color: inherit;
+  color: inherit;
 }

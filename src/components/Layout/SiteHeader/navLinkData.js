@@ -1,4 +1,5 @@
 const navLinkData = [
+  // { to: "home", text: "Home" },
   { to: "about", text: "About" },
   { to: "skills", text: "Skills" },
   { to: "projects", text: "Projects" },

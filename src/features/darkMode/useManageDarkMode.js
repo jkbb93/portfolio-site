@@ -11,7 +11,7 @@ import { manageLocalStorage } from "../../utils";
 const { getStoredValue, updateStoredValue } = manageLocalStorage("darkMode");
 
 function useManageDarkMode() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const systemSetToDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const hasSetInitialRef = useRef(false);
   const isInitialRenderRef = useRef(true);
@@ -29,8 +29,8 @@ function useManageDarkMode() {
 
     if (typeof storedSetting === "boolean") {
       setDarkMode(storedSetting);
-    } 
-    
+    }
+
     hasSetInitialRef.current = true;
   }, [systemSetToDarkMode]);
 

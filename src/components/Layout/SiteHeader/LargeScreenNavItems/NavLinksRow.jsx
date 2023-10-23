@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ScrollToLink } from "../../../shared";
 import navLinkData from "../navLinkData";
+import NavLinkWithUnderline from "./NavLinkWithUnderline";
 import styles from "./NavLinksRow.module.css";
 
 function NavLinksRow() {
@@ -10,9 +10,7 @@ function NavLinksRow() {
       whileHover={{ scale: 1.15 }}
       transition={{ type: "spring", stiffness: 500, damping: 17 }}
     >
-      <ScrollToLink to={link.to} className={styles.link}>
-        {link.text}
-      </ScrollToLink>
+      <NavLinkWithUnderline to={link.to}>{link.text}</NavLinkWithUnderline>
     </motion.li>
   ));
 

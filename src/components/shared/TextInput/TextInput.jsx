@@ -2,7 +2,16 @@ import { forwardRef } from "react";
 import styles from "./TextInput.module.css";
 
 const TextInput = forwardRef(function TextInput(
-  { type: passedType = "text", className = "", ...restProps },
+  {
+    type: passedType = "text",
+    name = "",
+    value,
+    onChange: handleChange,
+    placeholder = "",
+    className = "",
+    required = false,
+    ...restProps
+  },
   passedRef
 ) {
   // If passedType is one of allowed, use it, otherwise use "text"
@@ -19,6 +28,12 @@ const TextInput = forwardRef(function TextInput(
     <Element
       ref={passedRef}
       type={type !== "textarea" ? type : null}
+      name={name}
+      value={value}
+      onChange={handleChange}
+      placeholder={placeholder}
+      required={required}
+      aria-required={required}
       className={`${baseClass} ${textareaClass} ${className}`}
       {...restProps}
     />

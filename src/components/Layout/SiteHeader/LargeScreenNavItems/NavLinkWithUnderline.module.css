@@ -1,0 +1,20 @@
+.link {
+  padding: 0 40px;
+  display: block;
+  height: 100%;
+}
+
+.link span {
+  position: relative;
+}
+
+.underline {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0%;
+  background-color: var(--text-color-primary);
+  height: 3px;
+  width: 100%;
+  border-radius: 50px;
+  transform-origin: left center;
+}

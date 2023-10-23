@@ -1,64 +1,73 @@
+import { useState, useEffect, useRef } from "react";
 import styles from "./ScrollToLink.module.css";
-
-/*
- scrollTarget accepts an element ID as string (without #),
- or an object with x and y properties
-*/
 
 function ScrollToLink({
   children,
-  to: scrollTarget,
+  to: toString,
   onClick: onClickCallback,
+  onActiveChange: onActiveChangeCallback,
   className = "",
   ...restProps
 }) {
-  const scrollToElement = (id) => {
-    const element = document.getElementById(id);
-    const idLocation = `#${id}`;
-
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.pushState(null, "", idLocation);
-    } else {
-      console.warn("Element with id of " + idLocation + " not found");
-    }
-  };
-
-  const scrollToCoords = (coords) => {
-    const { x, y } = coords;
-
-    if (x !== undefined && y !== undefined) {
-      window.scrollTo({
-        behavior: "smooth",
-        left: x,
-        top: y,
-      });
-
-      window.history.pushState(null, "", "/");
-    } else {
-      console.warn(
-        "X and Y properties are required in object passed to 'to' prop of ScrollToLink"
-      );
-    }
-  };
+  const [isActive, setIsActive] = useState(false);
+  const href = `#${toString}`;
+  const isInitialRenderRef = useRef(true);
 
   const handleClick = (event) => {
     event.preventDefault();
 
-    if (typeof scrollTarget === "string") {
-      scrollToElement(scrollTarget);
-    } else if (typeof scrollTarget === "object") {
-      scrollToCoords(scrollTarget);
+    const element = document.getElementById(toString);
+
+    if (!element) {
+      console.warn(`No elements found with ID of ${href}`);
+      return;
     }
+
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const oldURL = window.location.href;
+
+    window.history.pushState(null, "", href);
+
+    window.dispatchEvent(
+      new HashChangeEvent("hashchange", {
+        oldURL,
+        newURL: window.location.href,
+      })
+    );
 
     if (typeof onClickCallback === "function") {
       onClickCallback(event);
     }
   };
 
+  useEffect(() => {
+    const updateIsActive = () => {
+      const nowActive = window.location.hash === href;
+      setIsActive(nowActive);
+
+      if (typeof onActiveChangeCallback === "function") {
+        onActiveChangeCallback({ href, isActive: nowActive });
+      }
+    };
+
+    // isInitialRenderRef in case onActiveCallback is not memoized
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
+      updateIsActive();
+    }
+
+    window.addEventListener("hashchange", updateIsActive);
+    return () => window.removeEventListener("hashchange", updateIsActive);
+  }, [href, onActiveChangeCallback]);
+
+  const passedClassName =
+    typeof className === "function" ? className(isActive) : className;
+
   return (
     <a
-      className={`${styles.link} ${className}`}
+      href={href}
+      className={`${styles.link} ${passedClassName}`}
       onClick={handleClick}
       {...restProps}
     >

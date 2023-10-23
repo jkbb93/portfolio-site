@@ -11,7 +11,7 @@ function ProjectCard({
   imgAlt,
   name,
   description,
-  techIcons,
+  techIcons = [],
   siteHref,
   gitHubHref,
 }) {
@@ -22,40 +22,34 @@ function ProjectCard({
 
   return (
     <Card className={styles.card}>
-      <div className={styles.project}>
-        <div className={styles["project-info"]}>
-          <a href={siteHref}>
-            <img src={imgSrc} alt={imgAlt} />
-          </a>
-          <div className={styles.description}>
-            <h2>{name}</h2>
-            <p>{description}</p>
+      <div className={styles["project-info"]}>
+        <a href={siteHref}>
+          <img src={imgSrc} alt={imgAlt} />
+        </a>
+        <div className={styles.description}>
+          <h2>{name}</h2>
+          <p>{description}</p>
+        </div>
+        {techIconComponents.length > 0 && (
+          <div className={styles["built-with"]}>
+            <span>Built with</span>
+            <div className={styles["tech-icons"]}>{techIconComponents}</div>
           </div>
-          {techIconComponents.length > 0 && (
-            <div className={styles["built-with"]}>
-              <span>Built with</span>
-              <div className={styles["tech-icons"]}>{techIconComponents}</div>
-            </div>
-          )}
-        </div>
-        <div>
-          {siteHref && (
-            <Button asLink href={siteHref} className={styles["external-link"]}>
-              <LinkIcon />
-              <span>View Live Site</span>
-            </Button>
-          )}
-          {gitHubHref && (
-            <Button
-              asLink
-              href={gitHubHref}
-              className={styles["external-link"]}
-            >
-              <GitHubIcon />
-              <span>View GitHub Repo</span>
-            </Button>
-          )}
-        </div>
+        )}
+      </div>
+      <div>
+        {siteHref && (
+          <Button asLink href={siteHref} className={styles["external-link"]}>
+            <LinkIcon />
+            <span>View Live Site</span>
+          </Button>
+        )}
+        {gitHubHref && (
+          <Button asLink href={gitHubHref} className={styles["external-link"]}>
+            <GitHubIcon />
+            <span>View GitHub Repo</span>
+          </Button>
+        )}
       </div>
     </Card>
   );

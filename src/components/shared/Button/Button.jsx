@@ -7,6 +7,7 @@ function Button({
   type = "button",
   asLink = false,
   href = "",
+  element,
   ...restProps
 }) {
   if (asLink && href === "") {

@@ -6,7 +6,7 @@ import techImg from "./Transparentbggraphic.png";
 
 function HeroSection() {
   return (
-    <Section>
+    <Section id="home">
       <div className={styles.hero}>
         <div>
           <HeroHeading />

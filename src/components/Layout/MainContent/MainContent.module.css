@@ -2,13 +2,22 @@
   padding: 0 5vw;
 }
 
-.wrapper > main {
-    max-width: 1440px;
-    margin: auto;
+.main {
+  max-width: 1440px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 150px;
 }
 
 @media (min-width: 768px) {
   .wrapper {
     padding: 0 10vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .main {
+    row-gap: 250px;
   }
 }

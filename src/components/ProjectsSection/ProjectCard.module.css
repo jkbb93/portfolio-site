@@ -1,10 +1,5 @@
 .card {
   padding: 16px 16px 20px;
-}
-
-.project {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -18,14 +13,14 @@
   margin-bottom: 32px;
 }
 
-.project img {
+.project-info img {
   width: 100%;
   border: var(--border-subtle);
   border-radius: 4px;
   margin-bottom: 8px;
 }
 
-.project img:hover {
+.project-info img:hover {
   opacity: 0.7;
 }
 

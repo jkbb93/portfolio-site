@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
+import { useNavLinks } from "../../../../features/navLinks";
 import { ScrollToLink } from "../../../shared";
 import styles from "./HeaderLogo.module.css";
 
 function HeaderLogo({ onClick: handleClick }) {
+  const { setActiveAnchor } = useNavLinks();
+
+  const updateActiveAnchor = ({ isActive, href }) => {
+    if (isActive) setActiveAnchor(href);
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.1, rotate: -2 }}
@@ -10,8 +17,9 @@ function HeaderLogo({ onClick: handleClick }) {
       className={`${styles.logo}`}
     >
       <ScrollToLink
-        to={{ x: 0, y: 0 }}
+        to="home"
         onClick={handleClick}
+        onActiveChange={updateActiveAnchor}
         className={styles.link}
       >
         Jake Betts
