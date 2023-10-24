@@ -26,7 +26,7 @@
 
 .description {
   flex-grow: 1;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .description h2 {
@@ -35,8 +35,8 @@
   margin: 0 0 16px;
 }
 
-.description p {
-  margin: 0;
+.description p:not(:last-of-type) {
+  margin: 0 0 16px;
 }
 
 .built-with span {

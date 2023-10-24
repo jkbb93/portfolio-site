@@ -7,9 +7,10 @@ import styles from "./CodeExample.module.css";
 function CodeExample({
   code = "",
   language = "javascript",
-  fileName,
   withHeader = true,
-  darkMode = true
+  fileName,
+  showLineNumbers = true,
+  darkMode = true,
 }) {
   const [wrapperStyle, setWrapperStyle] = useState(null);
   const wrapperRef = useRef(null);
@@ -40,7 +41,12 @@ function CodeExample({
           darkMode={darkMode}
         />
       )}
-      <Code language={language} code={code} darkMode={darkMode} />
+      <Code
+        language={language}
+        code={code}
+        showLineNumbers={showLineNumbers}
+        darkMode={darkMode}
+      />
     </div>
   );
 }

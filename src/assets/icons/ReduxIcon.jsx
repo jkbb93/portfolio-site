@@ -1,3 +1,5 @@
+// From https://devicon.dev/
+
 const SvgComponent = (props) => (
   <svg viewBox="0 0 128 128" {...props}>
     <path fill="none" d="M0 0h128v128H0z" />
@@ -7,4 +9,5 @@ const SvgComponent = (props) => (
     />
   </svg>
 );
+
 export default SvgComponent;

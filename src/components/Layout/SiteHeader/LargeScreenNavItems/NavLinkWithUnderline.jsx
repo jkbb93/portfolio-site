@@ -8,7 +8,7 @@ function NavLinkWithUnderline({ children, to }) {
   const [isHovered, setIsHovered] = useState(false);
   const { activeAnchor, setActiveAnchor } = useNavLinks();
 
-  const updateActiveAnchor = ({ isActive, href }) => {
+  const updateActiveAnchor = ({ href, isActive }) => {
     if (isActive) {
       setActiveAnchor(href);
     }
@@ -32,7 +32,7 @@ function NavLinkWithUnderline({ children, to }) {
           }}
           animate={{
             scaleX: shouldUnderline ? 1 : 0,
-            transition: { duration: shouldUnderline ? 0.12 : 0.08 },
+            transition: { duration: shouldUnderline ? 0.15 : 0.08 },
           }}
           className={styles.underline}
         />

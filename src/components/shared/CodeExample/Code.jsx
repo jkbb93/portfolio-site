@@ -4,13 +4,13 @@ import {
   duotoneDark,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-function Code({ language, code, darkMode = false }) {
+function Code({ language, code, showLineNumbers, darkMode = false }) {
   const style = darkMode ? duotoneDark : duotoneLight;
 
   const customStyle = {
     margin: 0,
     padding: 0,
-    lineHeight: "24px"
+    lineHeight: "24px",
   };
 
   const lineNumberStyle = {
@@ -26,7 +26,7 @@ function Code({ language, code, darkMode = false }) {
   return (
     <SyntaxHighlighter
       language={language}
-      showLineNumbers={true}
+      showLineNumbers={showLineNumbers}
       wrapLines={true}
       style={style}
       customStyle={customStyle}

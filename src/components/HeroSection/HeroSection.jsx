@@ -12,18 +12,20 @@ function HeroSection() {
           <HeroHeading />
         </div>
         <div
-          // ref={containerRef}
-          style={
-            {
-              // position: "relative",
-              // height: "400px",
-              // display: "flex",
-              // justifyContent: "center",
-            }
-          }
+          style={{
+            position: "relative",
+            height: "400px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <img src={techImg} style={{ width: "100%" }} alt="" />
-          {/* <HeroCodeExample codeExampleRef={codeExampleRef} /> */}
+          {/* <HeroCodeExample /> */}
+          <img
+            src={techImg}
+            alt="A desktop computer, tablet, and mobile showing abstract code"
+            style={{ width: "100%" }}
+          />
         </div>
       </div>
     </Section>

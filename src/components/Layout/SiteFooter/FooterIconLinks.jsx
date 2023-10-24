@@ -19,6 +19,8 @@ function FooterIconLinks() {
     <IconLink
       key={link.name}
       href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
       motionProps={{
         whileHover: { scale: 1.2 },
         transition: { type: "spring", stiffness: 500, damping: 20 },

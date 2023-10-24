@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { FaTerminal as CommandLineIcon } from "react-icons/fa";
 import {
   JSIcon,
-  ReactIcon,
   NodeIcon,
+  ExpressIcon,
+  ReactIcon,
+  NextIcon,
   ReduxIcon,
   HTMLIcon,
   CSSIcon,
@@ -16,7 +18,9 @@ function SkillsSection() {
   const iconData = [
     { label: "Javascript", icon: <JSIcon /> },
     { label: "Node.js", icon: <NodeIcon /> },
+    { label: "Express", icon: <ExpressIcon /> },
     { label: "React", icon: <ReactIcon /> },
+    { label: "Next.js", icon: <NextIcon /> },
     { label: "Redux", icon: <ReduxIcon /> },
     { label: "HTML5", icon: <HTMLIcon /> },
     { label: "CSS3", icon: <CSSIcon /> },

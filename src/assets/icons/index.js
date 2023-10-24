@@ -5,3 +5,5 @@ export { default as JSIcon } from "./JSIcon";
 export { default as NodeIcon } from "./NodeIcon";
 export { default as ReactIcon } from "./ReactIcon";
 export { default as ReduxIcon } from "./ReduxIcon";
+export { default as ExpressIcon } from "./ExpressIcon";
+export { default as NextIcon } from "./NextIcon";
