@@ -1,0 +1,15 @@
+.toggler {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggler line {
+  stroke: var(--text-color-primary);
+  width: 32px;
+  height: 32px;
+}

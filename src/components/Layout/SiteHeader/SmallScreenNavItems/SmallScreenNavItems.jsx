@@ -1,5 +1,5 @@
 import DarkModeToggler from "../DarkModeToggler";
-import HeaderNavDrawerToggler from "./HeaderNavDrawerToggler";
+import HamburgerToggler from "./HamburgerToggler";
 import styles from "./SmallScreenNavItems.module.css";
 
 function SmallScreenNavItems({
@@ -10,9 +10,9 @@ function SmallScreenNavItems({
   return (
     <div className={styles.items}>
       <DarkModeToggler />
-      <HeaderNavDrawerToggler
+      <HamburgerToggler
+        isToggled={drawerOpen}
         onClick={handleDrawerToggle}
-        ariaExpanded={drawerOpen}
         ariaControls={togglerAriaControls}
       />
     </div>
