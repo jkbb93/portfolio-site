@@ -10,18 +10,22 @@ import {
   HTMLIcon,
   CSSIcon,
   GitIcon,
+  TypeScriptIcon,
+  TailwindIcon,
 } from "../../assets/icons";
 import { Section, SectionHeading } from "../shared";
 import styles from "./SkillsSection.module.css";
 
 function SkillsSection() {
   const iconData = [
-    { label: "Javascript", icon: <JSIcon /> },
+    { label: "JavaScript", icon: <JSIcon /> },
+    { label: "TypeScript", icon: <TypeScriptIcon /> },
     { label: "Node.js", icon: <NodeIcon /> },
     { label: "Express", icon: <ExpressIcon /> },
     { label: "React", icon: <ReactIcon /> },
     { label: "Next.js", icon: <NextIcon /> },
     { label: "Redux", icon: <ReduxIcon /> },
+    { label: "Tailwind CSS", icon: <TailwindIcon /> },
     { label: "HTML5", icon: <HTMLIcon /> },
     { label: "CSS3", icon: <CSSIcon /> },
     { label: "Git", icon: <GitIcon /> },

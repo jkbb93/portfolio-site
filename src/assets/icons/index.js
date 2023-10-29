@@ -7,3 +7,5 @@ export { default as ReactIcon } from "./ReactIcon";
 export { default as ReduxIcon } from "./ReduxIcon";
 export { default as ExpressIcon } from "./ExpressIcon";
 export { default as NextIcon } from "./NextIcon";
+export { default as TypeScriptIcon } from "./TypeScriptIcon";
+export { default as TailwindIcon } from "./TailwindIcon";

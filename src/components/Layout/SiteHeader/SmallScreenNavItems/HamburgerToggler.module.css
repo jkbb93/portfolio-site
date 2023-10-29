@@ -8,6 +8,11 @@
   cursor: pointer;
 }
 
+.toggler > svg {
+  width: 95%;
+  height: 95%;
+}
+
 .toggler line {
   stroke: var(--text-color-primary);
   width: 32px;
