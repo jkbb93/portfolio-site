@@ -10,7 +10,7 @@ import ContactSection from "./components/ContactSection";
 // Global styles
 import "./styles.css";
 
-// Stylesheet for styles related to dark mode
+// Stylesheet for light/dark colour schemes
 import "./theme-styles.css";
 
 function App() {
